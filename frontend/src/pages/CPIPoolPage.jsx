@@ -106,11 +106,11 @@ export default function CPIPoolPage() {
               <Link to="/app" className="px-3 py-1.5 rounded-lg bg-yellow-500/15 text-yellow-400 font-medium">
                 CPI Epoch Pool
               </Link>
-              <Link to="/perps" className="px-3 py-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-white/5">
-                Legacy Perps
-              </Link>
               <Link to="/how-it-works" className="px-3 py-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-white/5">
                 How It Works
+              </Link>
+              <Link to="/faq" className="px-3 py-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-white/5">
+                FAQ
               </Link>
             </nav>
           </div>

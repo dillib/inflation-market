@@ -1,14 +1,25 @@
 # Inflation Market
 
-This repository consolidates the following projects:
+Focused, non-custodial **Monthly US CPI Epoch Pools** settled on official BLS/FRED CPI-U releases.
 
-- [Frontend](frontend/): imported from
-  [inflation-market-frontend](https://github.com/inflationmarket/inflation-market-frontend)
-  at `ef2f293b84bd4841767f993df02fd9b141c77a15`. This includes the React app
-  and the nested smart-wallets app.
-- [Smart contracts](contracts/): imported from
-  [inflation-market-contracts](https://github.com/inflationmarket/inflation-market-contracts)
-  at `e7972c4d744554dcf00a82e7f1ac0349dcffa089`.
+## Structure
 
-Both projects were imported with their Git histories. See their individual
-README files for setup and commands.
+- [contracts/](contracts/) — `CPIEpochPool.sol` (parimutuel USDC Over/Under CPI pools, automatic refunds for one-sided/cancelled epochs), Hardhat tests, and deployment script.
+- [frontend/](frontend/) — React + Tailwind app featuring the Monthly CPI Epoch Pool (`CPIPoolPage`), wallet connection, and [api/inflation.py](frontend/api/inflation.py) for live FRED CPI data.
+
+## Quick Start
+
+### Contracts
+```bash
+cd contracts
+npm install
+npx hardhat test
+npx hardhat run scripts/deploy/deploy-cpi-pool.js
+```
+
+### Frontend
+```bash
+cd frontend
+npm install
+npm start
+```

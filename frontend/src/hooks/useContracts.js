@@ -1,7 +1,7 @@
 import { ethers } from 'ethers';
 import { useCallback, useMemo } from 'react';
 import { getAddresses } from '../contracts/addresses';
-import { ERC20_ABI, VAULT_ABI, POSITION_MANAGER_ABI, VAMM_ABI, INDEX_ORACLE_ABI, FUNDING_CALCULATOR_ABI, CPI_EPOCH_POOL_ABI } from '../contracts/abis';
+import { ERC20_ABI, CPI_EPOCH_POOL_ABI } from '../contracts/abis';
 import { useProvider } from './useProvider';
 
 export function useContracts() {
@@ -13,11 +13,6 @@ export function useContracts() {
     return {
       erc20: (address) => new ethers.Contract(address, ERC20_ABI, provider),
       cpiEpochPool: addr.cpiEpochPool ? new ethers.Contract(addr.cpiEpochPool, CPI_EPOCH_POOL_ABI, provider) : null,
-      vault: addr.vault ? new ethers.Contract(addr.vault, VAULT_ABI, provider) : null,
-      positionManager: addr.positionManager ? new ethers.Contract(addr.positionManager, POSITION_MANAGER_ABI, provider) : null,
-      vamm: addr.vamm ? new ethers.Contract(addr.vamm, VAMM_ABI, provider) : null,
-      indexOracle: addr.indexOracle ? new ethers.Contract(addr.indexOracle, INDEX_ORACLE_ABI, provider) : null,
-      fundingCalc: addr.fundingCalculator ? new ethers.Contract(addr.fundingCalculator, FUNDING_CALCULATOR_ABI, provider) : null,
       addresses: addr,
     };
   }, [getReadProvider, addr]);
@@ -27,11 +22,6 @@ export function useContracts() {
     return {
       erc20: (address) => new ethers.Contract(address, ERC20_ABI, signer),
       cpiEpochPool: addr.cpiEpochPool ? new ethers.Contract(addr.cpiEpochPool, CPI_EPOCH_POOL_ABI, signer) : null,
-      vault: addr.vault ? new ethers.Contract(addr.vault, VAULT_ABI, signer) : null,
-      positionManager: addr.positionManager ? new ethers.Contract(addr.positionManager, POSITION_MANAGER_ABI, signer) : null,
-      vamm: addr.vamm ? new ethers.Contract(addr.vamm, VAMM_ABI, signer) : null,
-      indexOracle: addr.indexOracle ? new ethers.Contract(addr.indexOracle, INDEX_ORACLE_ABI, signer) : null,
-      fundingCalc: addr.fundingCalculator ? new ethers.Contract(addr.fundingCalculator, FUNDING_CALCULATOR_ABI, signer) : null,
       addresses: addr,
     };
   }, [getSigner, addr]);

@@ -14,11 +14,10 @@ export const SiteHeader = () => (
       </div>
 
       <nav className="hidden md:flex items-center gap-6">
+        <Link to="/app" className="text-sm text-gray-400 hover:text-yellow-500">CPI Epoch Pool</Link>
         <Link to="/how-it-works" className="text-sm text-gray-400 hover:text-yellow-500">How It Works</Link>
-        <Link to="/comparisons" className="text-sm text-gray-400 hover:text-yellow-500">Comparisons</Link>
-        <Link to="/whitepaper" className="text-sm text-gray-400 hover:text-yellow-500">Whitepaper</Link>
-        <Link to="/roadmap" className="text-sm text-gray-400 hover:text-yellow-500">Roadmap</Link>
         <Link to="/about" className="text-sm text-gray-400 hover:text-yellow-500">About</Link>
+        <Link to="/faq" className="text-sm text-gray-400 hover:text-yellow-500">FAQ</Link>
       </nav>
 
       <div className="flex items-center gap-3">
@@ -45,10 +44,8 @@ export const SiteFooter = () => (
         <div>
           <h4 className="font-bold text-white mb-4">Product</h4>
           <div className="space-y-2">
+            <Link to="/app" className="block text-sm text-gray-400 hover:text-yellow-500">CPI Epoch Pool</Link>
             <Link to="/how-it-works" className="block text-sm text-gray-400 hover:text-yellow-500">How It Works</Link>
-            <Link to="/comparisons" className="block text-sm text-gray-400 hover:text-yellow-500">Comparisons</Link>
-            <Link to="/whitepaper" className="block text-sm text-gray-400 hover:text-yellow-500">Whitepaper</Link>
-            <Link to="/roadmap" className="block text-sm text-gray-400 hover:text-yellow-500">Roadmap</Link>
             <Link to="/about" className="block text-sm text-gray-400 hover:text-yellow-500">About</Link>
             <Link to="/faq" className="block text-sm text-gray-400 hover:text-yellow-500">FAQ</Link>
           </div>
