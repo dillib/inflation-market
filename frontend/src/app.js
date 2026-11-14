@@ -3,6 +3,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import { ToastProvider } from './components/toast/ToastProvider';
 import { Web3Context } from './contexts/Web3Context';
 import LandingPageComp from './pages/LandingPage';
+import CPIPoolPageComp from './pages/CPIPoolPage';
 import TradingAppPageComp from './pages/TradingAppPage';
 import MobileNavBar from './components/nav/MobileNavBar';
 import MarketsPage from './pages/MarketsPage';
@@ -107,7 +108,8 @@ const RoutedApp = () => (
     <Route path="/markets" element={<WithNavigate Component={MarketsPage} />} />
     <Route path="/portfolio" element={<WithNavigate Component={PortfolioPage} />} />
     <Route path="/learn" element={<WithNavigate Component={LearnPage} />} />
-    <Route path="/app" element={<WithNavigate Component={TradingAppPageComp} />} />
+    <Route path="/app" element={<WithNavigate Component={CPIPoolPageComp} />} />
+    <Route path="/perps" element={<WithNavigate Component={TradingAppPageComp} />} />
     <Route path="/faq" element={<WithNavigate Component={FAQPage} />} />
     <Route path="/compliance" element={<WithNavigate Component={CompliancePage} />} />
     <Route path="/settings" element={<WithNavigate Component={SettingsPage} />} />
