@@ -15,8 +15,7 @@ export default function UserJourneyModal({ isOpen, onClose }) {
   };
 
   const handleTradeSpeculate = () => {
-    // Navigate to app in standard trading mode
-    navigate('/app');
+    navigate('/app?mode=predict');
     onClose();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -53,7 +52,7 @@ export default function UserJourneyModal({ isOpen, onClose }) {
                 </div>
                 <h3 className="text-xl font-bold text-white mb-2">Protect My Savings</h3>
                 <p className="text-sm text-gray-300 mb-4">
-                  I want to hedge against inflation and preserve my purchasing power with a long position.
+                  Hedge against a CPI spike this month with one click in Hedge Mode (zero liquidation risk).
                 </p>
                 <div className="flex items-center text-green-400 font-semibold text-sm">
                   <span>Start protecting</span>
@@ -76,7 +75,7 @@ export default function UserJourneyModal({ isOpen, onClose }) {
                 </div>
                 <h3 className="text-xl font-bold text-white mb-2">Trade & Speculate</h3>
                 <p className="text-sm text-gray-300 mb-4">
-                  I want to take positions on inflation markets—both long and short—to express my macro views.
+                  Stake USDC on OVER or UNDER for the upcoming monthly US CPI-U YoY release.
                 </p>
                 <div className="flex items-center text-blue-400 font-semibold text-sm">
                   <span>Start trading</span>

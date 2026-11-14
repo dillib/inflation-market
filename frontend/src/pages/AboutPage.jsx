@@ -110,9 +110,9 @@ export default function AboutPage() {
             <div>
               <div className="flex items-center gap-2 mb-2">
                 <TrendingUp className="w-5 h-5 text-blue-400"/>
-                <h3 className="text-lg font-semibold text-white">Perpetual Protection</h3>
+                <h3 className="text-lg font-semibold text-white">Monthly Epoch Pools</h3>
               </div>
-              <p className="text-gray-300 ml-7">Our perpetual swap architecture enables true long-term hedging with no expiration dates. Hold positions for days, months, or years. The simplified "Protection Level" interface encourages "set and forget" savings protection rather than frenetic trading, while our roadmap includes fixed-term instruments (2-5 year horizons) for even more sophisticated planning.</p>
+              <p className="text-gray-300 ml-7">Our parimutuel CPI Epoch Pool architecture aligns directly with monthly BLS CPI-U releases—no leverage, no liquidation risk, and no LP drain. Hedge rising living costs with one click or take an Over/Under position on the next official CPI print.</p>
             </div>
             <div>
               <div className="flex items-center gap-2 mb-2">
@@ -163,8 +163,8 @@ export default function AboutPage() {
               <p className="text-sm text-gray-300">MPC aggregation layer with Chainlink delivery publishes verifiable real-world economic data on-chain.</p>
             </div>
             <div className="rounded-lg border border-white/10 bg-white/5 p-4">
-              <div className="flex items-center gap-2 mb-2 text-yellow-500"><Layers className="w-4 h-4"/><span className="text-white font-semibold">Perpetual Markets</span></div>
-              <p className="text-sm text-gray-300">AMM-priced perpetuals with fair funding mechanisms that align mark price with index; no expiries, continuous access.</p>
+              <div className="flex items-center gap-2 mb-2 text-yellow-500"><Layers className="w-4 h-4"/><span className="text-white font-semibold">Parimutuel Epoch Pools</span></div>
+              <p className="text-sm text-gray-300">Monthly USDC pools settled against official US CPI prints. Winners share the opposing pool proportionally, and one-sided or cancelled epochs refund 100%.</p>
             </div>
           </div>
         </Card>

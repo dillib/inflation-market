@@ -23,15 +23,15 @@ export default function HowItWorksPage() {
             <div className="grid md:grid-cols-3 gap-6">
               <div className="rounded-xl border border-yellow-500/30 bg-black/30 p-5">
                 <div className="flex items-center gap-3 mb-2 text-yellow-500"><Shield className="w-5 h-5"/><span className="font-bold text-white">Non-custodial</span></div>
-                <p className="text-gray-300 text-sm">Open, on-chain perpetuals tied to macro indexes (CPI, housing, GDP) — not crypto spot.</p>
+                <p className="text-gray-300 text-sm">Monthly USDC epoch pools tied directly to official US CPI-U releases — zero leverage, zero liquidations.</p>
               </div>
               <div className="rounded-xl border border-yellow-500/30 bg-black/30 p-5">
-                <div className="flex items-center gap-3 mb-2 text-yellow-500"><Sigma className="w-5 h-5"/><span className="font-bold text-white">Mechanics</span></div>
-                <p className="text-gray-300 text-sm">Hybrid oracle publishes the index. An AMM sets the mark price. Funding aligns mark to index.</p>
+                <div className="flex items-center gap-3 mb-2 text-yellow-500"><Sigma className="w-5 h-5"/><span className="font-bold text-white">Parimutuel Pool</span></div>
+                <p className="text-gray-300 text-sm">All OVER and UNDER stakes sit in a single audited smart contract. Winners share the losing pool proportionally.</p>
               </div>
               <div className="rounded-xl border border-yellow-500/30 bg-black/30 p-5">
-                <div className="flex items-center gap-3 mb-2 text-yellow-500"><TrendingUp className="w-5 h-5"/><span className="font-bold text-white">Perpetuals</span></div>
-                <p className="text-gray-300 text-sm">No expiry; add/remove margin, manage leverage, and close any time.</p>
+                <div className="flex items-center gap-3 mb-2 text-yellow-500"><TrendingUp className="w-5 h-5"/><span className="font-bold text-white">100% Refund Guard</span></div>
+                <p className="text-gray-300 text-sm">If an epoch only has deposits on one side or is cancelled, participants claim a 100% refund with zero fee.</p>
               </div>
             </div>
           </Card>
@@ -46,53 +46,51 @@ export default function HowItWorksPage() {
               <p className="text-sm text-gray-300">Connect your wallet and select the supported network.</p>
             </div>
             <div className="p-4 rounded-lg border border-yellow-500/20 bg-white/5">
-              <div className="flex items-center gap-2 mb-2 text-yellow-500"><DollarSign className="w-4 h-4"/><span className="text-white font-semibold">Fund</span></div>
-              <p className="text-sm text-gray-300">Deposit USDC as margin. Start conservatively (e.g., 2-5x leverage).</p>
+              <div className="flex items-center gap-2 mb-2 text-yellow-500"><DollarSign className="w-4 h-4"/><span className="text-white font-semibold">Choose Mode</span></div>
+              <p className="text-sm text-gray-300">Pick Hedge Mode (one-click OVER shield) or Predict Mode (OVER / UNDER target CPI).</p>
             </div>
             <div className="p-4 rounded-lg border border-yellow-500/20 bg-white/5">
-              <div className="flex items-center gap-2 mb-2 text-yellow-500"><TrendingUp className="w-4 h-4"/><span className="text-white font-semibold">Select</span></div>
-              <p className="text-sm text-gray-300">Choose CPI, housing, or GDP markets and set slippage/funding prefs.</p>
+              <div className="flex items-center gap-2 mb-2 text-yellow-500"><TrendingUp className="w-4 h-4"/><span className="text-white font-semibold">Stake USDC</span></div>
+              <p className="text-sm text-gray-300">Approve and deposit USDC into the current monthly epoch before the lock deadline.</p>
             </div>
             <div className="p-4 rounded-lg border border-yellow-500/20 bg-white/5">
-              <div className="flex items-center gap-2 mb-2 text-yellow-500"><CheckCircle className="w-4 h-4"/><span className="text-white font-semibold">Open</span></div>
-              <p className="text-sm text-gray-300">Approve, then confirm the trade. The AMM sets the mark price.</p>
+              <div className="flex items-center gap-2 mb-2 text-yellow-500"><CheckCircle className="w-4 h-4"/><span className="text-white font-semibold">CPI Release</span></div>
+              <p className="text-sm text-gray-300">Official BLS/FRED CPI-U YoY print settles the epoch on-chain.</p>
             </div>
             <div className="p-4 rounded-lg border border-yellow-500/20 bg-white/5">
-              <div className="flex items-center gap-2 mb-2 text-yellow-500"><Shield className="w-4 h-4"/><span className="text-white font-semibold">Manage</span></div>
-              <p className="text-sm text-gray-300">Monitor funding and health. Add/remove margin. Close any time.</p>
+              <div className="flex items-center gap-2 mb-2 text-yellow-500"><Shield className="w-4 h-4"/><span className="text-white font-semibold">Claim</span></div>
+              <p className="text-sm text-gray-300">Winners claim principal + proportional share of the opposing pool in USDC.</p>
             </div>
           </div>
         </section>
 
-        {/* Funding & Pricing */}
+        {/* Settlement & Pool Math */}
         <section className="space-y-6">
-          <h2 className="text-3xl font-bold text-white">Funding and Pricing</h2>
+          <h2 className="text-3xl font-bold text-white">Settlement &amp; Pool Math</h2>
           <div className="grid md:grid-cols-2 gap-6">
             <Card>
-              <div className="text-xl font-bold text-white mb-2">Index Oracle</div>
-              <div className="text-gray-300">The hybrid MPC + Chainlink pipeline publishes the latest index value on-chain after multi-party verification.</div>
+              <div className="text-xl font-bold text-white mb-2">Official CPI-U Release</div>
+              <div className="text-gray-300">Each monthly epoch sets a target YoY CPI threshold (e.g., 2.80%). If the official BLS/FRED release is strictly above target, OVER wins; otherwise UNDER wins.</div>
             </Card>
             <Card>
-              <div className="text-xl font-bold text-white mb-2">Mark Price & AMM</div>
-              <div className="text-gray-300">The AMM quotes a trade price (mark) that can drift from index. Funding payments between longs/shorts pull it back toward fair value.</div>
+              <div className="text-xl font-bold text-white mb-2">Parimutuel Payouts</div>
+              <div className="text-gray-300">There is no house counterparty or LP drain. Every dollar of winning payout comes directly from the opposing side’s USDC pool, minus a 1.5% protocol fee on profits.</div>
             </Card>
           </div>
           <Card className="bg-white/5 border-white/10">
             <div className="text-sm font-bold text-white mb-3">Simple math</div>
             <div className="grid md:grid-cols-2 gap-4 text-sm">
               <div className="rounded-md bg-black/40 border border-white/10 p-3 font-mono text-yellow-200 overflow-x-auto">
-                FundingRate ≈ k · (Mark − Index) / Index
-                <div className="mt-2 text-xs text-gray-300">If mark is above index, longs pay shorts; if below, shorts pay longs. k controls how strongly funding pulls mark toward index.</div>
+                Payout = Stake + (Stake / WinningPool) × DistributableLosingPool
+                <div className="mt-2 text-xs text-gray-300">Winners receive their full principal back plus their pro-rata share of the losing pool (after the 1.5% fee).</div>
               </div>
               <div className="rounded-md bg-black/40 border border-white/10 p-3 font-mono text-yellow-200 overflow-x-auto">
-                HealthRatio = Collateral / MaintenanceMargin
-                <div className="mt-2 text-xs text-gray-300">Keep this ≥ 1.0. If it drops below 1, your position can be liquidated to protect the system.</div>
+                One-Sided / Cancelled Epoch → Refund = 100% of Stake (0% fee)
+                <div className="mt-2 text-xs text-gray-300">If nobody takes the opposing side before lock, everyone gets 100% of their USDC back.</div>
               </div>
             </div>
           </Card>
         </section>
-
-        
 
         {/* Glossary (last) */}
         <section>
@@ -100,28 +98,20 @@ export default function HowItWorksPage() {
           <Card>
             <div className="grid md:grid-cols-2 gap-6 text-sm text-gray-300">
               <div>
-                <div className="text-sm font-semibold text-white">CPI</div>
-                <p>Consumer Price Index, a measure of average consumer price changes. Demo references CPI‑U (monthly, NSA).</p>
+                <div className="text-sm font-semibold text-white">CPI-U (YoY)</div>
+                <p>Consumer Price Index for All Urban Consumers, published monthly by the U.S. Bureau of Labor Statistics and mirrored via FRED.</p>
               </div>
               <div>
-                <div className="text-sm font-semibold text-white">Index Price</div>
-                <p>The oracle‑delivered value of the economic index (e.g., latest CPI level).</p>
+                <div className="text-sm font-semibold text-white">Epoch</div>
+                <p>A monthly prediction and hedge window that locks before the official CPI release and settles once the print is published.</p>
               </div>
               <div>
-                <div className="text-sm font-semibold text-white">Mark Price</div>
-                <p>The AMM‑derived trade price used for PnL and funding, which tends toward the index via funding.</p>
+                <div className="text-sm font-semibold text-white">OVER / Hedge Side</div>
+                <p>Wins when the official CPI print is strictly greater than the epoch’s target threshold.</p>
               </div>
               <div>
-                <div className="text-sm font-semibold text-white">Funding</div>
-                <p>Periodic cash flow between longs and shorts that encourages mark and index to converge.</p>
-              </div>
-              <div>
-                <div className="text-sm font-semibold text-white">Maintenance Margin</div>
-                <p>The minimum collateral required to keep a position open; falling below it can trigger liquidation.</p>
-              </div>
-              <div>
-                <div className="text-sm font-semibold text-white">Leverage</div>
-                <p>Position size relative to collateral (e.g., 5×). Increases both PnL and risk.</p>
+                <div className="text-sm font-semibold text-white">UNDER Side</div>
+                <p>Wins when the official CPI print is at or below the epoch’s target threshold.</p>
               </div>
             </div>
           </Card>

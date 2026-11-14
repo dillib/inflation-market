@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import {
   Shield,
   TrendingUp,
@@ -40,7 +40,9 @@ export default function CPIPoolPage() {
   } = useCPIEpochPool();
   const inflationFeed = useInflationData();
 
-  const [mode, setMode] = useState('hedge'); // 'hedge' | 'predict'
+  const [searchParams] = useSearchParams();
+  const initialMode = searchParams.get('mode') === 'protect' ? 'hedge' : searchParams.get('mode') === 'predict' ? 'predict' : 'hedge';
+  const [mode, setMode] = useState(initialMode); // 'hedge' | 'predict'
   const [isOver, setIsOver] = useState(true);
   const [amount, setAmount] = useState('100');
   const [submitting, setSubmitting] = useState(false);

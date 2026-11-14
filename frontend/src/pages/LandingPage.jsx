@@ -147,22 +147,22 @@ export default function LandingPage() {
         <div className="max-w-5xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 rounded-full text-yellow-500 mb-6">
             <Zap className="w-4 h-4" />
-            Non-custodial • Decentralized • Testnet demo
+            Non-custodial • Zero Liquidations • Monthly US CPI Epoch Pools
           </div>
           <h1 className="text-5xl md:text-7xl font-black text-white mb-6 leading-tight">
-            The Savings Account That Beats Inflation
+            Hedge or Predict Monthly US Inflation
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed max-w-4xl mx-auto">
-            Protect your purchasing power with perpetual positions anchored to real US CPI and Treasury data. Your savings are hedged against inflation through continuous, non-custodial markets—not speculative crypto prices.
+            Stake USDC in parimutuel Monthly US CPI Epoch Pools settled on official BLS/FRED CPI-U releases. One-click inflation protection or Over/Under predictions—with zero leverage and zero liquidation risk.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Button onClick={handleStartTrading} className="text-lg px-10 py-6">
               Get Started <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
-            <Link to="/markets">
+            <Link to="/app">
               <Button variant="ghost" className="text-lg px-10 py-6 w-full">
-                Browse Markets
+                Open CPI Pool
               </Button>
             </Link>
           </div>
@@ -176,7 +176,7 @@ export default function LandingPage() {
                 Non-custodial
                 <InfoTooltip
                   title="Non-Custodial"
-                  content="You maintain complete control of your funds at all times. Smart contracts handle collateral and settlement—no intermediaries, no withdrawal limits, no counterparty risk."
+                  content="You maintain complete control of your funds at all times. CPIEpochPool smart contracts hold all USDC stakes and settle payouts on-chain."
                 />
               </span>
             </div>
@@ -185,10 +185,10 @@ export default function LandingPage() {
                 <Sigma className="w-5 h-5" />
               </div>
               <span className="text-gray-300 text-sm font-medium inline-flex items-center">
-                MPC + Chainlink
+                Official BLS / FRED CPI
                 <InfoTooltip
-                  title="Hybrid Oracle"
-                  content="Multi-Party Computation (MPC) aggregates real US CPI and Treasury data from official sources (BLS, Federal Reserve), delivered on-chain via Chainlink for tamper-proof verification."
+                  title="Official Settlement Data"
+                  content="Each monthly epoch settles against the official U.S. Bureau of Labor Statistics CPI-U YoY print mirrored via the Federal Reserve (FRED) API."
                 />
               </span>
             </div>
@@ -197,10 +197,10 @@ export default function LandingPage() {
                 <RefreshCw className="w-5 h-5" />
               </div>
               <span className="text-gray-300 text-sm font-medium inline-flex items-center">
-                Perpetual markets
+                Zero liquidations
                 <InfoTooltip
-                  title="Perpetual Markets"
-                  content="No expiry dates—ever. Hold positions for days, months, or years. Funding payments automatically keep market price aligned with real economic index data."
+                  title="Parimutuel Epoch Pools"
+                  content="No leverage, no hourly funding rates, and no liquidation risk. One-sided or cancelled epochs automatically refund 100% with zero fee."
                 />
               </span>
             </div>
@@ -212,8 +212,8 @@ export default function LandingPage() {
       <section className="px-4 -mt-8">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center justify-between mb-1 text-xs text-gray-400 px-1">
-            <span>Live market prices</span>
-            <span className="text-[11px] text-gray-500">Real-time perpetual rates • Updated continuously</span>
+            <span>Macro reference indicators</span>
+            <span className="text-[11px] text-gray-500">Flagship market: US CPI-U YoY Monthly Epoch Pool</span>
           </div>
           <div className="border border-white/10 rounded-xl bg-white/5 ticker">
             <div className="ticker-track px-4 py-3">
@@ -235,7 +235,7 @@ export default function LandingPage() {
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">How It Actually Works</h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              A perpetual swap mechanism that keeps your savings anchored to real economic data
+              A parimutuel monthly CPI pool designed around real-world CPI Release Day
             </p>
           </div>
 
@@ -244,16 +244,16 @@ export default function LandingPage() {
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold text-xl">1</div>
                 <h3 className="text-xl font-bold text-white inline-flex items-center">
-                  Real Data Oracle
+                  Monthly CPI Target
                   <InfoTooltip
-                    title="How the Oracle Works"
-                    content="We use a hybrid system: MPC nodes aggregate data from Bureau of Labor Statistics (CPI) and Federal Reserve (Treasury yields), then Chainlink delivers it on-chain with cryptographic proofs. This ensures data integrity and prevents manipulation."
+                    title="Monthly Epoch Setup"
+                    content="Each month has one clear US CPI-U YoY threshold (e.g. 2.80%) and a lock deadline before the official BLS release."
                   />
                 </h3>
               </div>
-              <p className="text-gray-300 mb-3">MPC + Chainlink oracle delivers verified US CPI and Treasury yield data on-chain from official sources (BLS, Federal Reserve).</p>
+              <p className="text-gray-300 mb-3">Each epoch sets a clear US CPI-U YoY target and locks before the monthly BLS/FRED CPI release.</p>
               <div className="text-sm text-blue-400 font-mono bg-blue-500/10 rounded px-3 py-2">
-                Index Price = f(CPI, Treasury Yields)
+                OVER: CPI &gt; Target | UNDER: CPI ≤ Target
               </div>
             </Card>
 
@@ -261,16 +261,16 @@ export default function LandingPage() {
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 font-bold text-xl">2</div>
                 <h3 className="text-xl font-bold text-white inline-flex items-center">
-                  Perpetual Positions
+                  Hedge or Predict
                   <InfoTooltip
-                    title="Long & Short Positions"
-                    content="Unlike traditional futures that expire monthly/quarterly, perpetuals never expire. Go LONG if you expect inflation to rise or want to hedge purchasing power. Go SHORT if you expect inflation to fall or want to hedge against deflationary scenarios. Both sides are needed for liquidity and fair pricing."
+                    title="Two Simple Modes"
+                    content="Hedge Mode stakes USDC on OVER to protect against inflation spikes. Predict Mode lets you choose OVER or UNDER with live pool odds."
                   />
                 </h3>
               </div>
-              <p className="text-gray-300 mb-3">Open long or short positions based on your inflation outlook. No expiry dates—hold for days, months, or years. Your position value tracks the inflation index.</p>
+              <p className="text-gray-300 mb-3">Use Hedge Mode for one-click inflation protection, or Predict Mode to back OVER or UNDER with USDC.</p>
               <div className="text-sm text-green-400 font-mono bg-green-500/10 rounded px-3 py-2">
-                Position Value ≈ Collateral × (1 ± ΔCPI)
+                Max Loss = Stake (Zero Liquidations)
               </div>
             </Card>
 
@@ -278,16 +278,16 @@ export default function LandingPage() {
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 font-bold text-xl">3</div>
                 <h3 className="text-xl font-bold text-white inline-flex items-center">
-                  Funding Mechanism
+                  Proportional Settlement
                   <InfoTooltip
-                    title="How Funding Works"
-                    content="The 'funding rate' is a continuous payment between long and short positions. When the market price drifts above the real economic index, longs pay shorts (incentive to close). When it's below, shorts pay longs. This keeps prices anchored to reality, not speculation."
+                    title="Parimutuel Payouts"
+                    content="Winners receive their principal plus a proportional share of the losing pool (minus a 1.5% fee). One-sided pools refund 100% with 0% fee."
                   />
                 </h3>
               </div>
-              <p className="text-gray-300 mb-3">Automatic rebalancing keeps market price aligned with real economic data. When mark ≠ index, funding flows between longs and shorts.</p>
+              <p className="text-gray-300 mb-3">Once the CPI print is released, winners claim their principal plus a pro-rata share of the losing pool.</p>
               <div className="text-sm text-purple-400 font-mono bg-purple-500/10 rounded px-3 py-2">
-                Funding = λ × (Mark - Index) / Index
+                Payout = Stake + Share(LosingPool)
               </div>
             </Card>
           </div>
@@ -573,12 +573,12 @@ export default function LandingPage() {
               <p className="text-sm text-gray-300">Connect your wallet and switch to the supported network.</p>
             </Card>
             <Card>
-              <div className="flex items-center gap-2 mb-2 text-yellow-500"><TrendingUp className="w-4 h-4"/><span className="text-white font-semibold">Choose your market</span></div>
-              <p className="text-sm text-gray-300">Select from US CPI or specialized inflation indices. Set your leverage (1x-20x).</p>
+              <div className="flex items-center gap-2 mb-2 text-yellow-500"><TrendingUp className="w-4 h-4"/><span className="text-white font-semibold">Choose Hedge or Predict</span></div>
+              <p className="text-sm text-gray-300">Pick one-click Hedge Mode (CPI Over) or Predict Mode (Over / Under target CPI).</p>
             </Card>
             <Card>
-              <div className="flex items-center gap-2 mb-2 text-yellow-500"><CheckCircle className="w-4 h-4"/><span className="text-white font-semibold">Open your position</span></div>
-              <p className="text-sm text-gray-300">Go long to hedge or short to speculate. Your collateral stays under your control.</p>
+              <div className="flex items-center gap-2 mb-2 text-yellow-500"><CheckCircle className="w-4 h-4"/><span className="text-white font-semibold">Stake &amp; Claim</span></div>
+              <p className="text-sm text-gray-300">Deposit USDC before lock. Winners share the opposing pool when CPI is released.</p>
             </Card>
           </div>
         </div>
@@ -588,17 +588,17 @@ export default function LandingPage() {
       <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto">
           <Card className="bg-gradient-to-br from-yellow-500/20 to-yellow-500/5 border-2 border-yellow-500/40 text-center p-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Ready to Get Started?</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Ready for the Next CPI Release?</h2>
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              Test the platform on Arbitrum Sepolia. Connect your wallet and explore our inflation markets with no risk to real funds.
+              Open the Monthly US CPI Epoch Pool to hedge rising living costs or predict the next BLS CPI-U print with zero liquidation risk.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button onClick={handleStartTrading} className="text-lg px-8 py-6">
                 Get Started <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
-              <Link to="/markets">
+              <Link to="/app">
                 <Button variant="ghost" className="text-lg px-8 py-6 w-full">
-                  Browse Markets
+                  Open CPI Pool
                 </Button>
               </Link>
             </div>

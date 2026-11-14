@@ -6,64 +6,47 @@ import { Card } from '../ui/primitives';
 export const HOME_FAQS = [
   {
     question: 'What is Inflation Market?',
-    answer: `Inflation Market is a decentralized protocol that lets you hedge or speculate on real economic indicators like US CPI, housing prices, and GDP growth. Using perpetual swaps (positions that never expire), you can protect your savings from inflation or profit when inflation falls—all without banks, brokers, or giving up custody of your funds.`,
+    answer: `Inflation Market is a non-custodial protocol built around Monthly US CPI Epoch Pools. Everyday savers can hedge rising living costs in one click (Hedge Mode), while macro traders can stake USDC on whether the next official US CPI-U YoY print lands OVER or UNDER the monthly target—with zero leverage and zero liquidation risk.`,
     comparison: [
-      'Unlike crypto perpetuals (GMX, dYdX) that track volatile coin prices, these markets track stable economic data from official sources like the Bureau of Labor Statistics.',
+      'Unlike leveraged perpetuals that suffer from dead liquidity between monthly CPI prints, parimutuel epoch pools concentrate 100% of liquidity into each monthly CPI release.',
       'Traditional inflation hedges (TIPS, I Bonds) require banks and have strict limits; Inflation Market is permissionless and non-custodial.',
     ],
   },
   {
     question: 'Who is Inflation Market built for?',
-    answer: `Individual traders, DAOs, and corporate treasuries who need to hedge inflation risk or express macro views. Anyone seeking diversified exposure to real economic data without relying on centralized instruments can benefit—from savers protecting purchasing power to speculators betting on deflationary periods.`,
+    answer: `Individual savers who want simple protection against inflation spikes, and macro/DeFi traders who want clean, liquid exposure to monthly US CPI releases without managing leverage, funding rates, or liquidation prices.`,
     comparison: [
       'Traditional inflation swaps are institutional-only; this platform is permissionless and open to anyone with a Web3 wallet.',
-      'Unlike crypto perpetuals that track volatile coin prices, these markets track stable economic indicators.',
+      'Designed for 30-second participation: pick Hedge or Over/Under, enter USDC, and claim after the CPI print.',
     ],
   },
   {
     question: 'Is the platform live right now?',
-    answer: `We are in public testnet. The current UI showcases prototype flows; production deployment follows once the hybrid oracle network is live, audits are complete, and we graduate the main contracts from testnet.`,
+    answer: `The web app is live with Interactive Preview mode and Arbitrum Sepolia smart contract support (CPIEpochPool.sol). Mainnet launch follows external security review and live oracle automation.`,
     comparison: [
-      'We’re phased: manual multi-sig (Phase 0) → 3-node hybrid network (Phase 1) → multi-region expansion (Phase 2) → open staking (Phase 3).',
-      'Competitors might already be mainnet, but usually with single-source oracles or crypto-only markets—we’re aligning launch with data integrity milestones.',
+      'Focused single-market design: one flagship US CPI-U YoY pool per monthly release instead of fragmented illiquid markets.',
     ],
   },
   {
-    question: 'What markets will be supported first?',
-    answer: `Phase 1 includes US CPI (headline), US housing (Case-Shiller index), and US real GDP growth. Future phases add EU, UK, and Japan metrics as data pipelines expand.`,
+    question: 'What market is supported?',
+    answer: `US Consumer Price Index (CPI-U YoY), anchored to official monthly releases from the U.S. Bureau of Labor Statistics (BLS) and mirrored via the Federal Reserve (FRED) API.`,
     comparison: [
-      'This scope is broader than single-region or crypto-only derivatives; it’s specifically tuned for inflation and macro data.',
+      'Concentrating all liquidity into one flagship monthly CPI pool ensures meaningful odds and zero cold-start fragmentation.',
     ],
   },
   {
-    question: 'How are prices sourced and kept trustworthy?',
-    answer: `Multiple independent nodes fetch CPI data from official government sources (like the Bureau of Labor Statistics), verify it against market data, and submit it on-chain. The smart contract only accepts updates when multiple nodes agree, preventing manipulation. Every price update is publicly visible on the blockchain for full transparency.`,
+    question: 'How do Monthly CPI Epoch Pools work?',
+    answer: `Each monthly epoch sets a target CPI threshold (e.g. 2.80% YoY) and a lock deadline ahead of the BLS CPI release. Participants deposit USDC into OVER (inflation > target) or UNDER (inflation <= target). When the official CPI print is published, winners receive their original stake back plus a proportional share of the losing pool, minus a 1.5% protocol fee on profits.`,
     comparison: [
-      'Single-source oracles create a single point of failure; our multi-node system requires consensus from multiple independent operators.',
-      'If official data is delayed, the protocol automatically uses verified market proxies (like inflation swap rates) as fallbacks.',
-    ],
-  },
-  {
-    question: 'How do the perpetual markets work?',
-    answer: `Perpetual markets let you open long or short positions that never expire. You can use up to 20x leverage. To keep market prices aligned with real CPI data, "funding payments" flow between longs and shorts every period—when the market price drifts too high, longs pay shorts (and vice versa). This mechanism ensures prices stay anchored to economic reality, not speculation.`,
-    comparison: [
-      'Similar to crypto perpetuals (like on dYdX), but tracking stable economic indicators (CPI, housing, GDP) instead of volatile crypto prices.',
-      'Traditional futures contracts expire monthly or quarterly; perpetuals never expire, giving you unlimited flexibility.',
-    ],
-  },
-  {
-    question: 'How are liquidations handled?',
-    answer: `Your position has a "health ratio" that tracks your collateral versus your margin requirements. If market moves cause this ratio to drop too low (below the maintenance threshold), anyone can trigger a liquidation to close your position automatically. The liquidator earns a small reward, and an insurance fund covers any remaining losses to protect the system.`,
-    comparison: [
-      'Unlike centralized exchanges where liquidations happen in black boxes, all liquidations here are transparent and executed by smart contracts anyone can audit.',
-      'The health ratio approach is battle-tested across DeFi lending protocols like Aave and Compound.',
+      'No leverage, no hourly funding rates, and no liquidations—your maximum downside is your USDC deposit.',
+      'If an epoch only has deposits on one side or is cancelled, all participants can claim a 100% refund with zero fee.',
     ],
   },
   {
     question: 'What fees should I expect?',
-    answer: `Trading fee (default 0.10% per open/close), funding payments exchanged between longs and shorts, protocol-defined liquidation fees, and gas costs. Slippage protection ensures trades revert if the price moves beyond your configured tolerance.`,
+    answer: `A 1.5% protocol fee is taken only from the losing pool upon settlement (0% fee if an epoch is one-sided or cancelled), plus standard Arbitrum network gas.`,
     comparison: [
-      'Fees are competitive with DeFi perpetual platforms while offering macro exposure not available on crypto-first venues.',
+      'No entry/exit spread, no hourly funding payments, and no liquidation penalties.',
     ],
   },
   {
