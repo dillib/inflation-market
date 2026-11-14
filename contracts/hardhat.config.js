@@ -8,8 +8,10 @@ require("hardhat-gas-reporter");
 require("solidity-coverage");
 
 const SEPOLIA_RPC_URL = process.env.SEPOLIA_RPC_URL || "https://eth-sepolia.g.alchemy.com/v2/your-api-key";
+const ARBITRUM_SEPOLIA_RPC_URL = process.env.ARBITRUM_SEPOLIA_RPC_URL || "https://sepolia-rollup.arbitrum.io/rpc";
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "0x0000000000000000000000000000000000000000000000000000000000000000";
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || "your-etherscan-api-key";
+const ARBISCAN_API_KEY = process.env.ARBISCAN_API_KEY || ETHERSCAN_API_KEY;
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -41,6 +43,14 @@ module.exports = {
       chainId: 11155111,
       blockConfirmations: 6,
     },
+    arbitrumSepolia: {
+      url: ARBITRUM_SEPOLIA_RPC_URL,
+      accounts: PRIVATE_KEY !== "0x0000000000000000000000000000000000000000000000000000000000000000"
+        ? [PRIVATE_KEY]
+        : [],
+      chainId: 421614,
+      blockConfirmations: 2,
+    },
   },
 
   paths: {
@@ -62,6 +72,9 @@ module.exports = {
   },
 
   etherscan: {
-    apiKey: ETHERSCAN_API_KEY,
+    apiKey: {
+      sepolia: ETHERSCAN_API_KEY,
+      arbitrumSepolia: ARBISCAN_API_KEY,
+    },
   },
 };

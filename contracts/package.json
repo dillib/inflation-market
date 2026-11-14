@@ -7,8 +7,9 @@
     "test": "hardhat test",
     "test:coverage": "hardhat coverage",
     "test:gas": "REPORT_GAS=true hardhat test",
-    "deploy": "hardhat deploy",
-    "deploy:sepolia": "hardhat deploy --network sepolia",
+    "deploy": "hardhat run scripts/deploy/deploy-cpi-pool.js",
+    "deploy:arbitrum-sepolia": "hardhat run scripts/deploy/deploy-cpi-pool.js --network arbitrumSepolia",
+    "deploy:sepolia": "hardhat run scripts/deploy/deploy-cpi-pool.js --network sepolia",
     "node": "hardhat node",
     "clean": "hardhat clean"
   },

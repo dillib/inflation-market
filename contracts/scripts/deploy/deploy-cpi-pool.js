@@ -5,6 +5,10 @@ async function main() {
   console.log("Deploying CPIEpochPool with account:", deployer.address);
 
   let usdcAddress = process.env.USDC_ADDRESS;
+  if (!usdcAddress && hre.network.config.chainId === 421614) {
+    usdcAddress = "0x75faf114eafb1BDbe2F0316DF893fd58CE46AA4d";
+    console.log("Using Arbitrum Sepolia Circle USDC:", usdcAddress);
+  }
   if (!usdcAddress) {
     console.log("No USDC_ADDRESS set; deploying MockERC20 (USDC, 6 decimals)...");
     const MockERC20 = await hre.ethers.getContractFactory("MockERC20");
